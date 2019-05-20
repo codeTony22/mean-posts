@@ -1,0 +1,14 @@
+<mat-card>
+    <h3>Title</h3>
+    <mat-form-field>
+        <input matInput type="text" [(ngModel)]="enteredTitle">
+    </mat-form-field>
+    <h3>Content</h3>
+    <mat-form-field>
+        <textarea matInput rows="6" [(ngModel)]="enteredContent"></textarea> 
+    </mat-form-field>
+</mat-card>
+<hr>
+<button mat-raised-button
+        color="accent" 
+        (click)="onAddPost()">Save Post</button>
