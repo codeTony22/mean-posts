@@ -1,11 +1,11 @@
 <mat-card>
     <!-- #postForm gives you access to  the angular form object-->
-    <form (submit)="onAddPost()" #postForm="ngForm">
+    <form (submit)="onAddPost(postForm)" #postForm="ngForm">
         <h3>Title</h3>
         <mat-form-field>
-            <input 
-            matInput 
-            type="text" 
+            <input
+            matInput
+            type="text"
             name="title"
             ngModel
             required
@@ -16,9 +16,9 @@
         </mat-form-field>
         <h3>Content</h3>
         <mat-form-field>
-            <textarea 
-            matInput 
-            rows="6" 
+            <textarea
+            matInput
+            rows="6"
             name="content"
             ngModel
             required
@@ -26,7 +26,7 @@
             #content="ngModel"></textarea>
             <mat-error *ngIf="content.invalid">Please enter a post content</mat-error>
         </mat-form-field>
-        <button 
+        <button
             mat-raised-button
             color="accent"
             type="submit"
