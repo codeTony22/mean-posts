@@ -1,14 +1,33 @@
 <mat-card>
-    <h3>Title</h3>
-    <mat-form-field>
-        <input matInput type="text" [(ngModel)]="enteredTitle">
-    </mat-form-field>
-    <h3>Content</h3>
-    <mat-form-field>
-        <textarea matInput rows="6" [(ngModel)]="enteredContent"></textarea> 
-    </mat-form-field>
+    <!-- #postForm gives you access to  the angular form object-->
+    <form (submit)="onAddPost()" #postForm="ngForm">
+        <h3>Title</h3>
+        <mat-form-field>
+            <input 
+            matInput 
+            type="text" 
+            name="title"
+            ngModel
+            required
+            minlength="3"
+            #title="ngModel">
+            <mat-error *ngIf="title.invalid">Please enter a post title</mat-error>
+        </mat-form-field>
+        <h3>Content</h3>
+        <mat-form-field>
+            <textarea 
+            matInput 
+            rows="6" 
+            name="content"
+            ngModel
+            required
+            #content="ngModel"></textarea> 
+            <mat-error *ngIf="content.invalid">Please enter a post content</mat-error>
+        </mat-form-field>
+        <button 
+            mat-raised-button
+            color="accent"
+            type="submit"
+        >Save Post</button>
+    </form>
 </mat-card>
-<hr>
-<button mat-raised-button
-        color="accent" 
-        (click)="onAddPost()">Save Post</button>
