@@ -11,7 +11,7 @@ export class PostsService {
   private posts: Post[] = [];
 
 
-  getPost() {
+  getPosts() {
     return [...this.posts];
   }
 
