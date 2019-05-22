@@ -1,5 +1,7 @@
-import { Post } from './post.model';
 import {Injectable} from '@angular/core';
+import { Subject } from 'rxjs';
+
+import { Post } from './post.model';
 
 
 // Angular will find and it will create only one instance of this Service.
@@ -9,14 +11,19 @@ import {Injectable} from '@angular/core';
 })
 export class PostsService {
   private posts: Post[] = [];
-
+  private postsUpdated = new Subject<Post[]>();
 
   getPosts() {
     return [...this.posts];
   }
 
+  getPostUpdateListener() {
+    return this.postsUpdated.asObservable();
+  }
+
   addPost(title: string, content: string) {
     const post: Post = { title: title, content: content};
     this.posts.push(post);
+    this.postsUpdated.next([...this.posts]);
   }
 }
